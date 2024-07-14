@@ -1,16 +1,45 @@
-import React from 'react'
+import React ,{useState} from 'react'
+import PropTypes from 'prop-types';
 
-export default function Contactus() {
+export default function Contactus(props) {
+
+    const handleUpClick=()=>{
+        console.log("UperrCase Clicked "+ text);
+        setText("You have Clicked on HandleUp Click")
+    }
+     
+
+    const handleOnchange=(event)=>{ 
+        console.log("Onchange");
+        setText(event.target.value)
+    }
+    
+const[text,setText]=useState("Enter text here");
+
+
     return (
+        <>
         <div>
-            <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"/>
+            <h1>{props.contactHeading}</h1>
+            {/* <div class="mb-4">
+            <label for="myBox" className="form-label">Email address</label>
+                <input type="email" className="form-control" id="mybox" placeholder="name@example.com"/>
+            </div> */}
+            <div className="mb-3">
+                <textarea className="form-control" value={text} onClick={handleOnchange} id="myBox" rows="8"></textarea>
             </div>
-            <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-            </div>
+
+            <button type="button" className="btn btn-primary" onClick={handleUpClick}>Convert to uppercase</button>
         </div>
+        </>
+
+        
     )
+}
+
+Contactus.propTypes = {
+    contactHeading: PropTypes.string
+}
+Contactus.defaultProps = {
+    contactHeading: "Contact Us"
 }

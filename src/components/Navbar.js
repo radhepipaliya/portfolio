@@ -5,17 +5,18 @@ import PropTypes from 'prop-types'
 const Navbar = (props) => {
     return (
         <>
-            <nav class="navbar navbar-expand-lg bg-body-tertiary">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="/">{props.title}</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
+            <nav className="navbar navbar-expand-lg bg-body-tertiary">
+                <div className="container-fluid">
+                    <a className="navbar-brand" href="/">{props.title}</a>
+                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                        <div class="navbar-nav">
-                            <a class="nav-link active" aria-current="page" href="/">{props.first}</a>
-                            <a class="nav-link" href="/">{props.second}</a>
-                            <a class="nav-link" href="/">{props.third}</a>
+                    <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div className="navbar-nav">
+                            <a className="nav-link active" aria-current="page" href="/">{props.first}</a>
+                            <a className="nav-link" href="/">{props.second}</a>
+                            <a className="nav-link" href="/">{props.third}</a>
+                            <a className="nav-link" href="/">{props.four}</a>
                         </div>
                     </div>
                 </div>
@@ -31,6 +32,7 @@ export default Navbar;
 Navbar.propTypes = {title: PropTypes.string.isRequired}
 Navbar.defaultProps = {title: "Radhe Pipaliya",
 first: "Home",
-second: "About me",
-third: "Contact Us"
+second:"Project",
+third: "About me", 
+four: "Contact Us"
 } 
