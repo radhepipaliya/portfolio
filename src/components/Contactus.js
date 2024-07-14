@@ -32,6 +32,12 @@ const[text,setText]=useState("Enter text here");
 
             <button type="button" className="btn btn-primary" onClick={handleUpClick}> Convert to uppercase</button>
         </div>
+
+        <div className="container my-3">
+            <h1>You text Summary</h1>
+            <p> {text.split(" ").length} Word and {text.length} characters </p>
+
+        </div>
         </>
 
         
