@@ -18,7 +18,7 @@ function Navbar({ theme, onToggleTheme }) {
             className="rounded-full border border-[var(--app-border)] px-1.5 sm:px-2.5 md:px-3 py-0.5 text-[7px] sm:text-[9px] md:text-xs uppercase tracking-[0.2em] text-[var(--app-text)] hover:border-[var(--app-accent)] hover:text-[var(--app-accent)] transition-colors whitespace-nowrap"
             aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}
           >
-            {theme === 'dark' ? 'L' : 'D'}
+            {theme === 'dark' ? 'Light' : 'Dark'}
           </button>
         </div>
       </nav>
