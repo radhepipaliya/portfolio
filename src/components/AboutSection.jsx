@@ -3,8 +3,8 @@ import ScrollReveal from './ScrollReveal'
 
 function AboutSection() {
   return (
-    <section id="about" className="flex min-h-screen items-center bg-(--app-surface-strong) px-4 py-20 sm:px-6 sm:py-24 md:px-12 md:py-32 lg:px-20">
-      <div className="grid w-full grid-cols-1 gap-8 sm:gap-10 md:gap-12 lg:gap-16 md:grid-cols-2">
+    <section id="about" className="flex min-h-screen items-center bg-(--app-surface-strong) px-4 py-16 sm:py-20 md:py-24 lg:py-32 sm:px-6 md:px-12 lg:px-20">
+      <div className="grid w-full grid-cols-1 gap-6 sm:gap-8 md:gap-10 lg:gap-12 md:grid-cols-2">
         <ScrollReveal className="relative" delay={80}>
           <img
             src=" "

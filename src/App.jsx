@@ -15,7 +15,8 @@ function scrollToSection(id) {
   }
 
   const start = window.scrollY
-  const end = target.getBoundingClientRect().top + window.scrollY - 72
+  const navHeight = window.innerWidth < 640 ? 64 : 60
+  const end = target.getBoundingClientRect().top + window.scrollY - navHeight
   const distance = end - start
   const duration = 900
 

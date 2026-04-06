@@ -14,8 +14,8 @@ function StackSection() {
   ]
 
   return (
-    <section id="stack" className="theme-surface-strong flex min-h-screen items-center px-4 py-20 sm:px-6 sm:py-24 md:px-12 md:py-32 lg:px-20">
-      <div className="grid w-full grid-cols-1 gap-8 sm:gap-10 md:gap-12 lg:gap-16 md:grid-cols-12">
+    <section id="stack" className="theme-surface-strong flex min-h-screen items-center px-4 py-16 sm:py-20 md:py-24 lg:py-32 sm:px-6 md:px-12 lg:px-20">
+      <div className="grid w-full grid-cols-1 gap-6 sm:gap-8 md:gap-10 lg:gap-12 md:grid-cols-12">
         <ScrollReveal className="md:col-span-4" delay={80}>
           <p className="text-xs sm:text-sm uppercase tracking-widest theme-accent">// Tech Stack</p>
           <h2 className="mt-3 sm:mt-4 md:mt-6 text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light leading-tight">

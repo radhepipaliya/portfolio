@@ -5,7 +5,7 @@ function ContactSection() {
   return (
     <section
       id="contact"
-      className="flex min-h-screen flex-col items-center justify-center px-4 py-20 sm:px-6 sm:py-24 md:px-12 md:py-32 lg:px-20 text-center"
+      className="flex min-h-screen flex-col items-center justify-center px-4 py-16 sm:py-20 md:py-24 lg:py-32 sm:px-6 md:px-12 lg:px-20 text-center"
     >
       <ScrollReveal delay={80}>
         <h1 className="mb-6 sm:mb-8 md:mb-10 text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-light leading-tight">Let&apos;s Build</h1>

@@ -2,8 +2,8 @@ import ScrollReveal from './ScrollReveal'
 
 function ProjectsSection() {
   return (
-    <section id="projects" className="theme-bg min-h-screen px-4 py-20 sm:px-6 sm:py-24 md:px-12 md:py-32 lg:px-20">
-      <div className="grid h-full grid-cols-1 items-center gap-6 sm:gap-8 md:gap-12 lg:gap-16 md:grid-cols-12">
+    <section id="projects" className="theme-bg min-h-screen px-4 py-16 sm:py-20 md:py-24 lg:py-32 sm:px-6 md:px-12 lg:px-20">
+      <div className="grid h-full grid-cols-1 items-center gap-6 sm:gap-8 md:gap-10 lg:gap-12 md:grid-cols-12">
         <ScrollReveal className="md:col-span-8" delay={80}>
           <div className="theme-card rounded-lg sm:rounded-xl p-3 sm:p-4 md:p-5 lg:p-6 shadow-2xl">
             <img
