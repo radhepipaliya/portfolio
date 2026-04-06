@@ -1,14 +1,23 @@
-function Navbar() {
+function Navbar({ theme, onToggleTheme }) {
   return (
-    <nav className="fixed z-50 flex w-full items-center justify-between bg-[#050a14]/90 px-6 py-6 md:px-10">
-      <div className="border border-gray-700 px-2 py-1 text-[10px] uppercase tracking-widest md:text-sm">
-        Based in New York
+    <nav className="fixed z-50 flex w-full items-center justify-between border-b border-[var(--app-border)] bg-[var(--app-nav)] px-6 py-6 backdrop-blur-md md:px-10">
+      <div className="border border-[var(--app-border)] px-2 py-1 text-[10px] uppercase tracking-widest text-[var(--app-accent)] md:text-sm">
+        Backend Engineer
       </div>
-      <div className="space-x-4 text-[10px] uppercase md:space-x-8 md:text-sm">
-        <a href="#home" className="hover:text-[#f06292]">Welcome</a>
-        <a href="#about" className="hover:text-[#f06292]">About</a>
-        <a href="#projects" className="hover:text-[#f06292]">Project</a>
-        <a href="#contact" className="hover:text-[#f06292]">Meta</a>
+      <div className="flex items-center gap-4 text-[10px] uppercase md:gap-8 md:text-sm">
+        <a href="#home" className="hover:text-[var(--app-accent)]">Home</a>
+        <a href="#about" className="hover:text-[var(--app-accent)]">About</a>
+        <a href="#stack" className="hover:text-[var(--app-accent)]">Stack</a>
+        <a href="#projects" className="hover:text-[var(--app-accent)]">Systems</a>
+        <a href="#contact" className="hover:text-[var(--app-accent)]">Contact</a>
+        <button
+          type="button"
+          onClick={onToggleTheme}
+          className="rounded-full border border-[var(--app-border)] px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-[var(--app-text)] hover:border-[var(--app-accent)] hover:text-[var(--app-accent)]"
+          aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}
+        >
+          {theme === 'dark' ? 'Light' : 'Dark'}
+        </button>
       </div>
     </nav>
   )
