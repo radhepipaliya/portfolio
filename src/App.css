@@ -119,6 +119,83 @@ html[data-theme='light'] {
 	transform: translateY(-2px);
 }
 
+@keyframes ctaArrowDrift {
+	0%,
+	100% {
+		transform: translateY(0);
+	}
+	50% {
+		transform: translateY(3px);
+	}
+}
+
+@keyframes ctaSheenSweep {
+	0% {
+		transform: translateX(-140%) skewX(-18deg);
+		opacity: 0;
+	}
+	25% {
+		opacity: 0.25;
+	}
+	100% {
+		transform: translateX(220%) skewX(-18deg);
+		opacity: 0;
+	}
+}
+
+@keyframes chipRise {
+	0%,
+	100% {
+		transform: translateY(0);
+	}
+	50% {
+		transform: translateY(-2px);
+	}
+}
+
+.home-cta {
+	position: relative;
+	overflow: hidden;
+	isolation: isolate;
+}
+
+.home-cta::after {
+	content: "";
+	position: absolute;
+	inset: -25%;
+	width: 44%;
+	background: linear-gradient(110deg, transparent 20%, rgb(255 255 255 / 35%) 50%, transparent 80%);
+	pointer-events: none;
+	opacity: 0;
+	transform: translateX(-140%) skewX(-18deg);
+}
+
+.home-cta:hover::after {
+	animation: ctaSheenSweep 700ms ease;
+}
+
+.home-cta-arrow {
+	animation: ctaArrowDrift 1600ms ease-in-out infinite;
+	transform-origin: center;
+}
+
+.home-cta:hover .home-cta-arrow {
+	animation-duration: 620ms;
+}
+
+.home-skill-chip {
+	animation: chipRise 3200ms ease-in-out infinite;
+	will-change: transform;
+}
+
+.home-skill-chip:nth-child(2) {
+	animation-delay: 180ms;
+}
+
+.home-skill-chip:nth-child(3) {
+	animation-delay: 360ms;
+}
+
 .reveal {
 	opacity: 0;
 	transform: translate3d(0, var(--reveal-y, 22px), 0) scale(0.985);
@@ -190,5 +267,12 @@ html[data-theme='light'] .home-name {
 		transform: none;
 		filter: none;
 		transition: none;
+	}
+
+	.home-cta::after,
+	.home-cta-arrow,
+	.home-skill-chip {
+		animation: none;
+		transform: none;
 	}
 }

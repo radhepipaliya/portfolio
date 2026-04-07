@@ -2,6 +2,8 @@ import NatureScene from './NatureScene'
 import ScrollReveal from './ScrollReveal'
 
 function HomeSection({ onViewStack, theme }) {
+  const isLightTheme = theme === 'light'
+
   return (
     <section
       id="home"
@@ -24,9 +26,9 @@ function HomeSection({ onViewStack, theme }) {
           ReactJS with clean architecture, performance, and maintainability in mind.
         </p>
         <div className="flex flex-wrap gap-2 sm:gap-3 pt-2 text-[9px] sm:text-xs lg:text-sm uppercase tracking-[0.25em] theme-accent">
-          <span className="theme-chip rounded-full px-2.5 sm:px-4 py-1 sm:py-2">Java</span>
-          <span className="theme-chip rounded-full px-2.5 sm:px-4 py-1 sm:py-2">ReactJS</span>
-          <span className="theme-chip rounded-full px-2.5 sm:px-4 py-1 sm:py-2">REST APIs</span>
+          <span className="theme-chip home-skill-chip rounded-full px-2.5 sm:px-4 py-1 sm:py-2">Java</span>
+          <span className="theme-chip home-skill-chip rounded-full px-2.5 sm:px-4 py-1 sm:py-2">ReactJS</span>
+          <span className="theme-chip home-skill-chip rounded-full px-2.5 sm:px-4 py-1 sm:py-2">REST APIs</span>
         </div>
       </ScrollReveal>
 
@@ -36,8 +38,18 @@ function HomeSection({ onViewStack, theme }) {
           delay={200}
           y={16}
         >
-          <p className="text-[9px] sm:text-xs uppercase theme-muted">&quot;Hello, I&apos;m&quot;</p>
-          <h2 className="home-name text-lg sm:text-2xl md:text-3xl lg:text-4xl">
+          <p
+            className={`text-[9px] sm:text-xs uppercase ${
+              isLightTheme ? 'text-black' : 'theme-accent'
+            }`}
+          >
+            &quot;Hello, I&apos;m&quot;
+          </p>
+          <h2
+            className={`home-name text-lg sm:text-2xl md:text-3xl lg:text-4xl ${
+              isLightTheme ? 'text-slate-900' : 'text-slate-100'
+            }`}
+          >
             Radhe
             <br />
             <span className="ml-2 sm:ml-4 md:ml-8 lg:ml-12 xl:ml-20">Pipaliya</span>
@@ -48,10 +60,20 @@ function HomeSection({ onViewStack, theme }) {
           <button
             type="button"
             onClick={onViewStack}
-            className="theme-button group inline-flex items-center gap-2 sm:gap-3 rounded-full px-3 sm:px-6 py-1 sm:py-2 text-xs sm:text-sm transition duration-300 hover:-translate-y-0.5 md:px-8"
+            className={`home-cta group inline-flex items-center gap-2 sm:gap-3 rounded-full px-3 sm:px-6 py-1 sm:py-2 text-xs sm:text-sm transition duration-300 hover:-translate-y-0.5 md:px-8 ${
+              isLightTheme
+                ? 'border border-slate-300 bg-white/90 text-slate-900 hover:bg-slate-100'
+                : 'theme-button'
+            }`}
           >
             View Stack
-            <span className="inline-block text-base transition-transform duration-300 group-hover:translate-y-1 motion-safe:animate-bounce">⌄</span>
+            <span
+              className={`home-cta-arrow inline-block text-base transition-transform duration-300 ${
+                isLightTheme ? 'text-slate-700' : 'text-(--app-accent)'
+              }`}
+            >
+              ⌄
+            </span>
           </button>
         </ScrollReveal>
       </div>
