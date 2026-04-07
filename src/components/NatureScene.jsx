@@ -241,10 +241,11 @@ function ServerRack({ position }) {
   )
 }
 
-function TechnicianFixingServer({ position = [0, 0, 0], isLight }) {
+function TechnicianFixingServer({ position = [0, 0, 0], isLight, action = 'repair' }) {
   const techRef = useRef()
   const rightArmRef = useRef()
   const toolGlowRef = useRef()
+  const isInspecting = action === 'inspect'
 
   useFrame((state) => {
     const time = state.clock.elapsedTime
@@ -254,17 +255,26 @@ function TechnicianFixingServer({ position = [0, 0, 0], isLight }) {
     }
 
     if (rightArmRef.current) {
-      rightArmRef.current.rotation.x = -0.9 + Math.sin(time * 3.8) * 0.28
-      rightArmRef.current.rotation.z = -0.22 + Math.sin(time * 2.6) * 0.08
+      if (isInspecting) {
+        rightArmRef.current.rotation.x = -0.55 + Math.sin(time * 2.6) * 0.16
+        rightArmRef.current.rotation.z = -0.42 + Math.sin(time * 1.7) * 0.12
+      } else {
+        rightArmRef.current.rotation.x = -0.9 + Math.sin(time * 3.8) * 0.28
+        rightArmRef.current.rotation.z = -0.22 + Math.sin(time * 2.6) * 0.08
+      }
     }
 
     if (toolGlowRef.current) {
-      toolGlowRef.current.intensity = (isLight ? 0.45 : 0.72) + Math.sin(time * 8.5) * 0.2
+      if (isInspecting) {
+        toolGlowRef.current.intensity = (isLight ? 0.42 : 0.6) + Math.sin(time * 5.2) * 0.14
+      } else {
+        toolGlowRef.current.intensity = (isLight ? 0.45 : 0.72) + Math.sin(time * 8.5) * 0.2
+      }
     }
   })
 
   return (
-    <group ref={techRef} position={position} rotation={[0, 0.95, 0]}>
+    <group ref={techRef} position={position} rotation={[0, isInspecting ? 1.2 : 0.95, 0]}>
       <mesh position={[0, 0.92, 0]}>
         <capsuleGeometry args={[0.14, 0.45, 8, 16]} />
         <meshStandardMaterial color={isLight ? '#546f92' : '#263a55'} roughness={0.72} metalness={0.14} />
@@ -286,17 +296,30 @@ function TechnicianFixingServer({ position = [0, 0, 0], isLight }) {
           <meshStandardMaterial color={isLight ? '#d7b89c' : '#c79f86'} roughness={0.65} metalness={0.04} />
         </mesh>
 
-        <mesh position={[0.03, -0.41, 0.18]} rotation={[0.25, 0.3, 0]}>
-          <boxGeometry args={[0.14, 0.05, 0.05]} />
-          <meshStandardMaterial color={isLight ? '#9db8d6' : '#6f8fb3'} roughness={0.4} metalness={0.55} />
-        </mesh>
+        {isInspecting ? (
+          <mesh position={[0.02, -0.42, 0.16]} rotation={[0.55, 0.22, -0.08]}>
+            <boxGeometry args={[0.16, 0.1, 0.02]} />
+            <meshStandardMaterial
+              color={isLight ? '#91b5db' : '#678cb3'}
+              emissive={isLight ? '#6e9ac9' : '#5d86b2'}
+              emissiveIntensity={0.24}
+              roughness={0.38}
+              metalness={0.48}
+            />
+          </mesh>
+        ) : (
+          <mesh position={[0.03, -0.41, 0.18]} rotation={[0.25, 0.3, 0]}>
+            <boxGeometry args={[0.14, 0.05, 0.05]} />
+            <meshStandardMaterial color={isLight ? '#9db8d6' : '#6f8fb3'} roughness={0.4} metalness={0.55} />
+          </mesh>
+        )}
       </group>
 
       <pointLight
         ref={toolGlowRef}
         position={[0.3, 0.62, 0.36]}
-        color={isLight ? '#86bfff' : '#69adff'}
-        intensity={isLight ? 0.45 : 0.72}
+        color={isInspecting ? (isLight ? '#78a8d8' : '#7bb4ed') : isLight ? '#86bfff' : '#69adff'}
+        intensity={isInspecting ? (isLight ? 0.42 : 0.6) : isLight ? 0.45 : 0.72}
         distance={2.4}
       />
 
@@ -336,6 +359,7 @@ function BackendStage({ theme }) {
           <ServerRack position={[0, 0, 0]} />
           <ServerRack position={[1.5, 0.1, -0.2]} />
           <TechnicianFixingServer position={[-0.82, -1.05, 0.52]} isLight={isLight} />
+          <TechnicianFixingServer position={[1.5, -1.02, 0.78]} isLight={isLight} action="inspect" />
         </group>
 
         <group position={[2.8, -0.25, -0.9]}>
