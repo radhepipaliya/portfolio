@@ -5,11 +5,11 @@ function AboutSection() {
   return (
     <section id="about" className="flex min-h-screen items-center bg-(--app-surface-strong) px-4 py-16 sm:py-20 md:py-24 lg:py-32 sm:px-6 md:px-12 lg:px-20">
       <div className="grid w-full grid-cols-1 gap-6 sm:gap-8 md:gap-10 lg:gap-12 md:grid-cols-2">
-        <ScrollReveal className="relative" delay={80}>
+        <ScrollReveal className="relative flex items-center justify-center" delay={80}>
           <img
-            src=" "
+            src="/profile.png"
             alt="Backend engineer profile (Updating soon)"
-            className="rounded-sm border border-(--app-border) grayscale transition duration-500 hover:grayscale-0 w-full"
+            className="rounded-sm border border-(--app-border) grayscale transition duration-500 hover:grayscale-0 w-full max-w-xs sm:max-w-sm md:max-w-md object-cover"
           />
         </ScrollReveal>
         <ScrollReveal className="space-y-4 sm:space-y-5 md:space-y-6" delay={170}>
